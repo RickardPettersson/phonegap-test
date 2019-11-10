@@ -23,13 +23,8 @@
     <preference name="DisallowOverscroll" value="true" />
 
     <!-- Define a specific version of PhoneGap to build into your app. -->
-    <preference name="phonegap-version"       value="cli-9.0.0" />
-	
-	<!-- Added becouse of phonegap plugin barcodescanner https://github.com/phonegap/phonegap-plugin-barcodescanner -->
-	<preference name="android-build-tool" value="gradle" />
-	
-	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
-	
+    <!--<preference name="phonegap-version"       value="cli-9.0.0" />-->
+			
     <!-- Plugins -->
     <!-- Core plugins -->
     <plugin name="cordova-plugin-battery-status"      source="npm" spec="~1.2.4" />
@@ -165,10 +160,4 @@
         <allow-intent href="itms-apps:*" />
     </platform>
 
-
-	<config-file target="AndroidManifest.xml" parent="/*" mode="merge">
-		<uses-permission android:name="android.permission.CAMERA" />
-		<uses-feature android:name="android.hardware.camera" />
-		<uses-feature android:name="android.hardware.camera.autofocus" />
-	</config-file>
 </widget>
