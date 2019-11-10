@@ -20,10 +20,10 @@
     <content src="index.html" />
 
     <!-- Customize your app and platform with the preference element. -->
-    <preference name="DisallowOverscroll"         value="true" />
+    <preference name="DisallowOverscroll" value="true" />
 
     <!-- Define a specific version of PhoneGap to build into your app. -->
-    <!-- <preference name="phonegap-version"       value="cli-6.0.0" /> -->
+    <preference name="phonegap-version"       value="cli-9.0.0" />
 	
 	<!-- Added becouse of phonegap plugin barcodescanner https://github.com/phonegap/phonegap-plugin-barcodescanner -->
 	<preference name="android-build-tool" value="gradle" />
