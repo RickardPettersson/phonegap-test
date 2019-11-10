@@ -46,12 +46,9 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
-};
-
-
-function Test() {
+    },
 	
+	barcodeScanner : function() {
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
 			  alert("We got a barcode\n" +
@@ -76,4 +73,5 @@ function Test() {
 			  disableSuccessBeep: false // iOS and Android
 		  }
 		);
-}
+	}
+};
