@@ -19,44 +19,64 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        document.getElementById("start-scan").onclick = function() {
+            window.plugins.GMVBarcodeScanner.scan({}, function(err, result) {
+                //Handle Errors
+                if(err) return that.updateResults(err, true);
+
+                //Do something with the data.
+                that.updateResults(result);
+            });
+        };
 		
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    },
 	
-	barcodeScanner : function() {
-		window.plugins.GMVBarcodeScanner.scan({}, function(err, result) { 
-    
-			//Handle Errors
-			if(err) return;
-			
-			//Do something with the data.
-			alert(result);
-			
-		});
-	}
+	updateResults: function(result, err) {
+        var ele = document.getElementById("last-result");
+        if(err) {
+            addClass(ele, "error");
+        } else {
+            removeClass(ele, "error");
+        }
+        if(typeof result == "object") {
+            result = JSON.stringify(result, null, 2);
+        }
+        if(err) {
+            result = "ERROR\n"+result;
+        }
+        document.getElementById("last-result").innerText = result
+    }
 };
+
+
+function hasClass(ele,cls) {
+    return !!ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+
+function addClass(ele,cls) {
+    if (!hasClass(ele,cls)) ele.className += " "+cls;
+}
+
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
+
+
+app.initialize();

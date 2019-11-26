@@ -44,18 +44,23 @@
 
 <body>
     <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-		<button onclick="JavaScript:app.barcodeScanner();">Test</button>
+        <div class="inner">
+                <div class="app">
+                    <div class="button" id="start-scan">
+                        Scan Now
+                    </div><br>
+<!--                    <div class="button button-sm" id="start-license-scan">
+                        License Scan
+                    </div><br>
+                    <div class="button button-sm" id="start-vin-scan">
+                        VIN Scan
+                    </div>-->
+                    <pre id="last-result">Waiting for result...</pre>
+                </div>
+            </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
 </body>
 
 </html>
