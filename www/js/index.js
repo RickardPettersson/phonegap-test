@@ -4,7 +4,10 @@ var app = {
     },
     onDeviceReady: function() {
         var that = this;
+
         document.getElementById("start-scan").onclick = function() {
+			
+			// https://github.com/phonegap/phonegap-plugin-barcodescanner#readme
             cordova.plugins.barcodeScanner.scan(
 			  function (result) {
 				  that.updateResults(result);
