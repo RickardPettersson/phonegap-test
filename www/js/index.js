@@ -3,8 +3,10 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
     onDeviceReady: function() {
+		alert('OK1');
         var that = this;
         document.getElementById("start-scan").onclick = function() {
+			alert('OK2');
             window.plugins.GMVBarcodeScanner.scan({}, function(err, result) {
                 //Handle Errors
                 if(err) return that.updateResults(err, true);
@@ -14,12 +16,14 @@ var app = {
             });
         };
         document.getElementById("start-license-scan").onclick = function() {
+			alert('OK3');
             window.plugins.GMVBarcodeScanner.scanLicense(function(err, result) {
                 if(err) return that.updateResults(err, true);
                 that.updateResults(result);
             });
         };
         document.getElementById("start-vin-scan").onclick = function() {
+			alert('OK4');
             window.plugins.GMVBarcodeScanner.scanVIN(function(err, result) {
                 if(err) return that.updateResults(err, true);
                 that.updateResults(result);
